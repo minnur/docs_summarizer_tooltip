@@ -1,6 +1,7 @@
 # Document Summarizer Tooltip
 
 Automatically detects document files (PDF, TXT, CSV, HTML etc.) on pages and provides AI-generated summaries in tooltips on hover.
+`This module was built with AI assistance.`
 
 ## Features
 
