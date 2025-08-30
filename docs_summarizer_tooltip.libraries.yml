@@ -1,0 +1,10 @@
+docs_finder:
+  version: VERSION
+  js:
+    js/docs-finder.js: {}
+  css:
+    theme:
+      css/docs-summarizer.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

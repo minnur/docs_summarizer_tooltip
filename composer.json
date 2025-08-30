@@ -1,0 +1,19 @@
+{
+  "name": "drupal/docs_summarizer_tooltip",
+  "description": "AI-powered document summarization tooltip module for Drupal",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://www.drupal.org/project/docs_summarizer_tooltip",
+  "authors": [
+    {
+      "name": "Minnur Yunusov",
+      "homepage": "https://www.drupal.org/u/minnur"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/docs_summarizer_tooltip"
+  },
+  "require": {
+    "drupal/ai": "^1.1"
+  }
+}

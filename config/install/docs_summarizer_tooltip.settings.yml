@@ -1,0 +1,10 @@
+enabled: true
+ai_model: ''
+summary_prompt: "Please provide a concise summary of this document in 2-3 sentences. Focus on the main topic, key points, and purpose of the document.\r\nIf a file cannot be summarizer or loaded say \"Unable to load the file\" and if file extensions is not supported say \"File extensions is not supported\""
+max_summary_length: 340
+cache_timeout: 3600
+supported_extensions:
+  - pdf
+  - txt
+  - csv
+  - html

@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains docs_summarizer_tooltip.module.
+ */
+
+use Drupal\Core\Url;
+use Drupal\docs_summarizer_tooltip\Form\DocsSummarizerTooltipSettingsForm;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function docs_summarizer_tooltip_page_attachments(array &$attachments) {
+  // Only attach on non-admin pages to avoid interference.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Skip admin routes.
+  if (strpos($route_name, 'system.admin') === 0) {
+    return;
+  }
+
+  // Check if module is enabled in configuration.
+  $config = \Drupal::config('docs_summarizer_tooltip.settings');
+  if (!$config->get('enabled')) {
+    return;
+  }
+
+  // Attach the document finder library.
+  $attachments['#attached']['library'][] = 'docs_summarizer_tooltip/docs_finder';
+
+  // Get supported extensions.
+  $supported_extensions = $config->get('supported_extensions') ?: explode(',', DocsSummarizerTooltipSettingsForm::SUPPORTED_EXTENSIONS);
+
+  // Pass configuration to JavaScript.
+  $attachments['#attached']['drupalSettings']['docsSummarizer'] = [
+    'enabled' => TRUE,
+    'ajaxUrl' => Url::fromRoute('docs_summarizer_tooltip.get_summary')->toString(),
+    'cacheTimeout' => $config->get('cache_timeout') ?: 3600,
+    'supportedExtensions' => $supported_extensions,
+    'csrfToken' => \Drupal::csrfToken()->get('docs_summarizer_tooltip_ajax'),
+  ];
+}

@@ -1,0 +1,415 @@
+/**
+ * @file
+ * CSS styles for PDF Summarizer vanilla tooltips and UI elements.
+ */
+
+/**
+ * PDF Link Indicators
+ */
+.docs-summarizer-link {
+  position: relative;
+  cursor: help;
+}
+
+.docs-summarizer-link::after {
+  content: "📄";
+  font-size: 0.8em;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+
+/**
+ * Vanilla Tooltip Styles
+ */
+.docs-summarizer-tooltip {
+  position: absolute;
+  z-index: 9999;
+  max-width: 320px;
+  min-width: 250px;
+  background: #ffffff;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0;
+  overflow: hidden;
+}
+
+/**
+ * Dark mode support
+ */
+@media (prefers-color-scheme: dark) {
+  .docs-summarizer-tooltip {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+}
+
+/**
+ * Tooltip Header
+ */
+.docs-tooltip-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-tooltip-header {
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    border-bottom-color: #4b5563;
+  }
+}
+
+.docs-link-title {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+  margin-bottom: 6px;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.docs-filename-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docs-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.docs-filename {
+  font-weight: 500;
+  color: #6b7280;
+  font-size: 12px;
+  word-break: break-word;
+  flex: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-link-title {
+    color: #f9fafb;
+  }
+
+  .docs-filename {
+    color: #d1d5db;
+  }
+}
+
+/**
+ * Tooltip Content
+ */
+.docs-tooltip-content {
+  padding: 16px;
+  position: relative;
+}
+
+/* Loading State */
+.docs-loading {
+  color: #6b7280;
+  font-size: 13px;
+  font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-loading {
+    color: #9ca3af;
+  }
+}
+
+/**
+ * Summary Content
+ */
+.docs-summary {
+  position: relative;
+}
+
+.docs-summary p {
+  margin: 0;
+  color: #374151;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-summary p {
+    color: #d1d5db;
+  }
+}
+
+/**
+ * Cache Indicator
+ */
+.cache-indicator {
+  font-size: 12px;
+  color: #10b981;
+  margin-left: 4px;
+}
+
+/**
+ * Error State
+ */
+.docs-error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-error {
+    color: #fca5a5;
+  }
+}
+
+/**
+ * Tooltip Arrow
+ */
+.docs-summarizer-tooltip::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #ffffff;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-summarizer-tooltip::before {
+    border-top-color: #1f2937;
+  }
+}
+
+/**
+ * Responsive Design
+ */
+@media (max-width: 768px) {
+  .docs-summarizer-tooltip {
+    max-width: 280px;
+    min-width: 200px;
+    font-size: 13px;
+  }
+
+  .docs-tooltip-header {
+    padding: 10px 12px;
+  }
+
+  .docs-tooltip-content {
+    padding: 12px;
+  }
+
+  .docs-link-title {
+    font-size: 13px;
+  }
+
+  .docs-filename {
+    font-size: 11px;
+  }
+
+  .docs-summary p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .docs-summarizer-tooltip {
+    max-width: calc(100vw - 20px);
+    min-width: 180px;
+  }
+}
+
+/**
+ * Animation for tooltip appearance
+ */
+.docs-summarizer-tooltip {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * High contrast mode support
+ */
+@media (prefers-contrast: high) {
+  .docs-summarizer-tooltip {
+    border: 2px solid #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .docs-tooltip-header {
+    border-bottom: 2px solid #000000;
+  }
+
+  .docs-filename {
+    font-weight: 700;
+  }
+}
+
+/**
+ * Reduced motion support
+ */
+@media (prefers-reduced-motion: reduce) {
+  .docs-summarizer-tooltip {
+    animation: none;
+  }
+
+  .loading-spinner {
+    animation: none;
+  }
+
+  .loading-spinner::after {
+    content: "⏳";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+  }
+}
+
+/* Focus and accessibility */
+.docs-summarizer-link:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/**
+ * Print styles
+ */
+@media print {
+  .docs-summarizer-tooltip {
+    display: none !important;
+  }
+
+  .docs-summarizer-link::after {
+    display: none;
+  }
+}
+
+/**
+ * Hover effects for better UX
+ */
+.docs-summarizer-link:hover {
+  text-decoration: underline;
+  text-decoration-color: #3b82f6;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/**
+ * Touch device optimizations
+ */
+@media (hover: none) and (pointer: coarse) {
+  .docs-summarizer-tooltip {
+    max-width: calc(100vw - 40px);
+    font-size: 16px; /* Larger text for touch devices */
+  }
+
+  .docs-tooltip-content {
+    padding: 16px;
+  }
+
+  .docs-summary p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+/**
+ * RTL support
+ */
+[dir="rtl"] .docs-summarizer-link::after {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+[dir="rtl"] .docs-tooltip-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .cache-indicator {
+  right: auto;
+  left: -8px;
+}
+
+[dir="rtl"] .docs-error {
+  flex-direction: row-reverse;
+}
+
+/**
+ * Screen reader only content
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/**
+ * Keyboard navigation support
+ */
+.docs-summarizer-tooltip[tabindex="-1"]:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/**
+ * Enhanced focus indicators for keyboard users
+ */
+.docs-summarizer-link:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 2px;
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.docs-summarizer-tooltip:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/**
+ * Remove focus ring for mouse users
+ */
+.docs-summarizer-link:focus:not(:focus-visible) {
+  outline: none;
+  background-color: transparent;
+}
+
+.docs-summarizer-tooltip:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/**
+ * Announcement region for screen readers
+ */
+#docs-summarizer-announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

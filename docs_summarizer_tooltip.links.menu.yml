@@ -1,0 +1,6 @@
+docs_summarizer_tooltip.settings:
+  title: 'Document Summarizer'
+  description: 'Configure the document summarizer tooltip settings'
+  parent: ai.admin_settings
+  route_name: docs_summarizer_tooltip.settings
+  weight: 10

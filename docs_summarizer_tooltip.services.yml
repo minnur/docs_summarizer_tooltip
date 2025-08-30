@@ -1,0 +1,8 @@
+services:
+  docs_summarizer_tooltip.summary_service:
+    class: Drupal\docs_summarizer_tooltip\Service\DocsSummaryService
+    arguments: ['@ai.provider', '@config.factory', '@cache.default', '@logger.factory']
+  
+  docs_summarizer_tooltip.docs_detector:
+    class: Drupal\docs_summarizer_tooltip\Service\DocsDetectorService
+    arguments: ['@http_client', '@logger.factory']

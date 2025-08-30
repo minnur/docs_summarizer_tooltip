@@ -1,0 +1,18 @@
+docs_summarizer_tooltip.get_summary:
+  path: '/docs-summarizer-tooltip/get-summary'
+  defaults:
+    _controller: '\Drupal\docs_summarizer_tooltip\Controller\DocsSummaryController::getSummary'
+    _format: json
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+docs_summarizer_tooltip.settings:
+  path: '/admin/config/ai/docs-summarizer-tooltip'
+  defaults:
+    _form: '\Drupal\docs_summarizer_tooltip\Form\DocsSummarizerTooltipSettingsForm'
+    _title: 'Document Summarizer Tooltip Settings'
+  requirements:
+    _permission: 'administer ai'
