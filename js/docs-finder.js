@@ -29,8 +29,7 @@
 
       // Get supported extensions.
       supportedExtensions = settings.docsSummarizer.supportedExtensions || [
-        'pdf', 'doc', 'docx', 'txt', 'csv', 'xlsx', 'ppt', 'pptx',
-        'ods', 'odp', 'xml', 'html', 'htm', 'rtf'
+        'pdf', 'txt', 'csv', 'html'
       ];
 
       // Build CSS selector for all supported document types.
@@ -259,11 +258,11 @@
    */
   function positionTooltip(link, tooltip) {
     const rect = link.getBoundingClientRect();
-    
+
     // Use fixed positioning to avoid scroll issues
     tooltip.style.position = 'fixed';
     tooltip.style.zIndex = '10000';
-    
+
     // Force a reflow to get accurate dimensions
     tooltip.offsetHeight;
     const tooltipRect = tooltip.getBoundingClientRect();
@@ -271,7 +270,7 @@
     // Store original link position for consistent positioning
     const linkCenterX = rect.left + (rect.width / 2);
     const preferredTop = rect.top - tooltipRect.height - 8;
-    
+
     // Calculate horizontal position (center above link)
     let left = linkCenterX - (tooltipRect.width / 2);
     let top = preferredTop;
